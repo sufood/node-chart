@@ -1,0 +1,59 @@
+doctype html
+html(lang='en')
+ head
+   meta(charset="utf-8")
+   meta(name="viewport",content="width=device-width,initial-scale=1")
+   title(Google Visualisation API | Krandor Home)
+   style
+      include styles.css
+   script.
+     var doNotTrack = false;if (!doNotTrack) { window.ga=window.ga||function(){(ga.q=ga.q| []).push(arguments)};ga.l=+new Date; ga('create', 'UA-131728687-1', 'auto'); ga('send', 'pageview');}
+   script(src='https://www.google-analytics.com/analytics.js')
+   script(src="https://www.gstatic.com/charts/loader.js")
+   script.
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]
+        ]);
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('mvChart'));
+        chart.draw(data, options);
+      }
+   
+ body
+   div.header
+     a(href='/') Krandor Home
+     div.header-menu
+       a(href='/post') Blog 
+       a(href='/recipes') Recipes 
+       a(href='/docs') Docs 
+       a(href='/about') About 
+     div.content
+       header
+         h1 Google Visualisation API
+         div.post-meta
+           p [#{(new Date()).toLocaleDateString()}]
+       article
+         div#mvChart
+         div#kChart
+         button#addMv Add mV
+         button#addK Add K
+         p
+       div.footer
+         div.footer-links
+           a('https://github.com/Xzya') GitHub 
+           a('/post/index.xml') RSS
+         div.copyright © 2019 — The Real Krandor  — All rights reserved.
+Ail
+
+
